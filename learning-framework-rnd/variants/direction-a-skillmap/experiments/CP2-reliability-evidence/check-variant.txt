@@ -1,0 +1,21 @@
+== direction-a-skillmap: 18/18 checks ok
+  [ok ] init
+  [ok ] project_state
+  [ok ] start
+  [ok ] start_output
+  [ok ] say
+  [ok ] status_json
+  [ok ] status_json_parses
+  [ok ] pause
+  [ok ] handoff
+  [ok ] sync
+  [ok ] sync_reports_tristate
+  [ok ] journal_has_turns
+  [ok ] journal_integrity
+  [ok ] session_files
+  [ok ] doctor
+  [ok ] export
+  [ok ] export_file
+  [ok ] export_exit
+
+report: C:\Users\YK\Desktop\LearnArk\_sandbox\checks\check-all.json

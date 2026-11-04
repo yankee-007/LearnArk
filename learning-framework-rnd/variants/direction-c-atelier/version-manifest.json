@@ -1,0 +1,71 @@
+{
+  "id": "direction-c-atelier",
+  "name": "Atelier 多导师工作室",
+  "version": "0.2.4",
+  "core_version": "1.0.5",
+  "entry": "runtime/learn.py",
+  "schema_version": 1,
+  "mentors": [
+    "planner",
+    "concept",
+    "coach",
+    "examiner",
+    "reviewer"
+  ],
+  "built_at": "2026-11-04T12:55:00+08:00",
+  "implementation": "runtime + offline tests + real-API smoke runs (see examples/demo.md)",
+  "round_01_fixes": [
+    "say 回合永不被交接校验丢弃；失败记 handoff_rejected 并留在当前导师",
+    "交接内容由运行时从 journal/session/plan 合成，switch 默认成功；--strict 仅用于 C-S2 契约测试",
+    "每个 say 尝试都有 say_attempt 事件与唯一 attempt_id；重名歧义退出 2",
+    "known/what_tried 从真实事件与会话生成；do_not_redo 只收明确说过的条目，可为空",
+    "进度/步骤计数/待批计划提示 ID 从状态派生；不再记录空 op=none 待批项"
+  ],
+  "round_02_fixes": [
+    "只有 examiner 会话可写 correct=true / verified；coach/concept/planner 只记 practice_attempt，correct=null，不升级",
+    "导师文本赞扬但含纠正时记 mentor_verdict_conflict，按未通过处理",
+    "机器块缺失/非法时静默重试一次并记 mentor_update_retried，仍失败只提示“本轮没有形成可记录的证据”，status 显示未标注",
+    "mentor 文本/字段中的误解记 misconception_observed 并写入对应技能节点 last_fail，status/--json 增加薄弱/误解区",
+    "证据 artifact 先校验文件存在；缺失记 evidence_artifact_missing，artifact=null 且 artifact_verified=false",
+    "coach 请求 examiner 独立验证时自动建 pending_exam，status/start/pause 的 next 统一为 learn.cmd examine",
+    "what_tried 在句子/标点边界截断并保留…，只注入 journal/session 事实；提示词禁止虚构前情",
+    "planner 诊断出需要讲解/陪练的误解时自动交接（auto 提案或运行时兜底，记 diagnosis_handoff_requested）",
+    "sync 暴露 --recover；core 1.0.2 在 rebase 失败后自动尝试 journal 并集恢复，快照冲突中止并列出真实冲突文件",
+    "status 显示 unmerged/diverged；doctor 在分叉时失败并退出 3；冲突时 sync 退出 3",
+    "生成项目带 .gitattributes（* -text），忽略 lock/usage/sync-log；移除本方向旧的 gitignore 补丁"
+  ],
+  "round_03_04_fixes": [
+    "sync --recover --prefer local|remote：journal 并集，state 选边，继续 rebase 并 push；默认拒绝并列出真实冲突文件",
+    "start 只读计划并打开会话（一次 session_opened），不写 handoff/studio，不再按“超过 7 天”生造交接与未决项",
+    "--minutes-per-week 按分钟存储、按小时显示（60≈1 小时，600≈10 小时），plan/context/export 同步修正",
+    "handoff what_tried 聚合最近 2–3 次跨会话尝试；next 只来自运行时 next_step",
+    "misconception 只来自学习者原话被点名纠正或 planner 明确诊断，解释/夸奖不再制造弱点，未开始技能不建证据",
+    "叙述性提到导师只记 mentor_mentioned；只有 switch 或直接请求才换人",
+    "pause/sync 的事件在最终提交前写入，sync-log 写到忽略文件，pause 后工作树干净"
+  ],
+  "round_05_06_fixes": [
+    "学习者明说的每周小时/区间与今天分钟写入 project/plan/session，start/plan 用真实预算并显示区间与剩余分钟",
+    "next 带 action/activity/预计分钟；导师承诺的下一活动成为 blocking open_loop，运行时 next 是唯一权威",
+    "会话时间按真实时钟计算并显示剩余/还有 N 分钟，导师正文不能结束会话；planner 至少问 2 道 probe 才确认诊断",
+    "空会话 pause 不写自我交接；帮助等级 0 改为“独立作答（无提示）”",
+    "email 项目的 README/AGENTS 由模板生成，去除 Agent/JSON/help_level/工具调用等编程残留",
+    "exam 按题记录 pass/fail，3 题队列保留 remaining/current，next=examine 直到全部答完；examiner 自动写考核 artifact，pass 关闭里程碑 open_loop",
+    "无效机器块保留回合原文并在 status 显示“未形成可记录证据”"
+  ],
+  "known_limits": [
+    "handoff 内容现在由运行时从 journal/session/plan 合成；如果事件流本身被外部删改，合成结果也会随之偏差，doctor 只能发现部分不一致。",
+    "examiner 独立性由上下文构造器与写入权限保证（coach/concept 私有笔记对 examiner 不可读），但题目是否真属迁移题仍取决于模型生成质量，运行时只能做查重与评分标准核对。",
+    "只有 examiner 会话能提升能力等级；coach/concept 的练习只记 practice_attempt（correct=null），因此未安排考核时进度会停在 0。",
+    "misconception / mentor_verdict_conflict / exam_request / diagnosis 交接都由确定性关键词与文本启发式识别，可能漏判或过度触发，需要真实使用数据校准。",
+    "artifact 校验只检查本地文件是否存在，不校验内容哈希；examiner 会自动写考核记录，练习产物缺失时仍标 artifact_verified=false。",
+    "email 模板已有结构化计划、评分口径与跨主题冒烟测试，但没有真人写作数据，也没有独立体验验收。",
+    "do_not_redo 现在只收明确说过的条目，可为空；archive/superseded/dnr_retired 与 handoff_stale_plan 事件仍未实现。",
+    "6000 字符上下文预算与 30 回合增长曲线只在离线 12 回合内验证；单回合 token 成本尚未实测真实 API 成本。",
+    "会话预算按真实时钟显示并拦截“已收工”的误导，但不会自动关闭会话，也不会按分钟裁剪模型输出；单次 --minutes 仍是上限提示。",
+    "3 题考核队列按题目顺序推进；如果 examiner 临时换题号，运行时按“答一题减一题”处理，不保证题号与模板一一对应。",
+    "recover --prefer 只按文件选边，不做逐字段语义合并；journal 并集与 dedupe 会重建，capability/studio 以所选侧为准。",
+    "start 会打开会话并提交一条 session_opened（因此不是严格零写入）；不会写 handoff 或 studio。",
+    "未验证真人长期学习收益；H0 与替代解释 H1 的消融对照尚无数据。模拟学习者只证明系统行为，不证明学习效果。",
+    "GitHub 远程同步只在本机裸仓库验证（push/pull/clone），没有真实 GitHub 账号与跨设备验证。"
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-04T12:30:00+08:00",
+  "conventions": {
+    "task_id": "variant-role or variant-round-scenario",
+    "status": "pending | running | completed | failed | incomplete",
+    "counts_as_rnd_post": "only the 16 R1-R4 tasks",
+    "counts_as_round": "only a round with implementation change + independent use + triage + retest"
+  },
+  "dev_tasks": [
+    {
+      "task_id": "A-R1",
+      "variant": "direction-a-skillmap",
+      "role": "research",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ],
+      "agent_id": "8abcb47e-528f-41d0-94fd-55e69915ed18"
+    },
+    {
+      "task_id": "A-R2",
+      "variant": "direction-a-skillmap",
+      "role": "pedagogy",
+      "status": "running",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ],
+      "agent_id": "58335189-5f04-4b5c-ba79-83159caabf52"
+    },
+    {
+      "task_id": "A-R3",
+      "variant": "direction-a-skillmap",
+      "role": "engineer",
+      "status": "completed",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "task_id": "A-R4",
+      "variant": "direction-a-skillmap",
+      "role": "reliability",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md",
+        "experiments/CP2-reliability.md"
+      ]
+    },
+    {
+      "task_id": "B-R1",
+      "variant": "direction-b-forge",
+      "role": "research",
+      "status": "running",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ],
+      "agent_id": "80ce8f7c-7447-4b5f-ac67-a3aeaa40ddea"
+    },
+    {
+      "task_id": "B-R2",
+      "variant": "direction-b-forge",
+      "role": "pedagogy",
+      "status": "running",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ],
+      "agent_id": "fd70b66f-6209-4df7-9bf3-a8fea43ecff7"
+    },
+    {
+      "task_id": "B-R3",
+      "variant": "direction-b-forge",
+      "role": "engineer",
+      "status": "completed",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "task_id": "B-R4",
+      "variant": "direction-b-forge",
+      "role": "reliability",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md",
+        "experiments/CP2-reliability.md"
+      ]
+    },
+    {
+      "task_id": "C-R1",
+      "variant": "direction-c-atelier",
+      "role": "research",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ],
+      "agent_id": "3227c20d-d0e1-4bbe-a99d-97d011b5e9f2"
+    },
+    {
+      "task_id": "C-R2",
+      "variant": "direction-c-atelier",
+      "role": "pedagogy",
+      "status": "running",
+      "outputs": [
+        "mentors/",
+        "protocols/handoff.md",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ],
+      "agent_id": "ff6df10e-78d1-4780-a255-34899bd733fa"
+    },
+    {
+      "task_id": "C-R3",
+      "variant": "direction-c-atelier",
+      "role": "engineer",
+      "status": "completed",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "task_id": "C-R4",
+      "variant": "direction-c-atelier",
+      "role": "reliability",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md",
+        "experiments/CP2-reliability.md"
+      ]
+    },
+    {
+      "task_id": "D-R1",
+      "variant": "direction-d-tempo",
+      "role": "research",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ],
+      "agent_id": "f1c2b168-5853-4352-bc54-b08251d71a12"
+    },
+    {
+      "task_id": "D-R2",
+      "variant": "direction-d-tempo",
+      "role": "pedagogy",
+      "status": "running",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ],
+      "agent_id": "34d24dfb-13da-4bf4-9dae-9ee95da2e60f"
+    },
+    {
+      "task_id": "D-R3",
+      "variant": "direction-d-tempo",
+      "role": "engineer",
+      "status": "completed",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "task_id": "D-R4",
+      "variant": "direction-d-tempo",
+      "role": "reliability",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md",
+        "experiments/CP2-reliability.md"
+      ]
+    }
+  ],
+  "experience_tasks": [
+    {
+      "task_id": "direction-a-skillmap-R01-S1",
+      "variant": "direction-a-skillmap",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "issues_fixed_in": "0.2.1"
+    },
+    {
+      "task_id": "direction-b-forge-R01-S1",
+      "variant": "direction-b-forge",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "issues_fixed_in": "0.2.1"
+    },
+    {
+      "task_id": "direction-c-atelier-R01-S1",
+      "variant": "direction-c-atelier",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "issues_fixed_in": "0.2.1"
+    },
+    {
+      "task_id": "direction-d-tempo-R01-S1",
+      "variant": "direction-d-tempo",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "issues_fixed_in": "0.2.1"
+    },
+    {
+      "task_id": "direction-a-skillmap-R02-S2",
+      "variant": "direction-a-skillmap",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "running"
+    },
+    {
+      "task_id": "direction-b-forge-R02-S2",
+      "variant": "direction-b-forge",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "running"
+    },
+    {
+      "task_id": "direction-d-tempo-R02-S2",
+      "variant": "direction-d-tempo",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "running"
+    },
+    {
+      "task_id": "direction-a-skillmap-R05-S5",
+      "variant": "direction-a-skillmap",
+      "round": 5,
+      "scenario": "S5",
+      "persona": "P3",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-a-skillmap-R06-S6",
+      "variant": "direction-a-skillmap",
+      "round": 6,
+      "scenario": "S6",
+      "persona": "P4",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-b-forge-R05-S5",
+      "variant": "direction-b-forge",
+      "round": 5,
+      "scenario": "S5",
+      "persona": "P3",
+      "status": "report-written; P3 read one forbidden file (disclosed)"
+    },
+    {
+      "task_id": "direction-b-forge-R06-S6",
+      "variant": "direction-b-forge",
+      "round": 6,
+      "scenario": "S6",
+      "persona": "P4",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-c-atelier-R05-S5",
+      "variant": "direction-c-atelier",
+      "round": 5,
+      "scenario": "S5",
+      "persona": "P3",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-c-atelier-R06-S6",
+      "variant": "direction-c-atelier",
+      "round": 6,
+      "scenario": "S6",
+      "persona": "P4",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-d-tempo-R05-S5",
+      "variant": "direction-d-tempo",
+      "round": 5,
+      "scenario": "S5",
+      "persona": "P3",
+      "status": "report-written"
+    },
+    {
+      "task_id": "direction-d-tempo-R06-S6",
+      "variant": "direction-d-tempo",
+      "round": 6,
+      "scenario": "S6",
+      "persona": "P4",
+      "status": "report-written"
+    }
+  ],
+  "acceptance_tasks": [],
+  "rounds": {
+    "direction-a-skillmap": {
+      "completed": 6,
+      "planned": 8,
+      "current": "round-05/06 fixes; round-07/08 pending"
+    },
+    "direction-b-forge": {
+      "completed": 6,
+      "planned": 8,
+      "current": "round-05/06 fixes; round-07/08 pending"
+    },
+    "direction-c-atelier": {
+      "completed": 6,
+      "planned": 8,
+      "current": "round-05/06 fixes; round-07/08 pending"
+    },
+    "direction-d-tempo": {
+      "completed": 6,
+      "planned": 8,
+      "current": "round-05/06 fixes; round-07/08 pending"
+    }
+  },
+  "reliability_tasks": [
+    {
+      "variant": "direction-a-skillmap",
+      "agent_id": "5e39bea0-16fd-4aee-93a3-bd1d487f7f39",
+      "status": "running"
+    },
+    {
+      "variant": "direction-c-atelier",
+      "agent_id": "7d1fd55e-b74a-488e-b737-0bf67c5dc4d0",
+      "status": "running"
+    }
+  ]
+}

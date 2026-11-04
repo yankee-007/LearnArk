@@ -1,0 +1,10 @@
+﻿__pycache__/
+*.pyc
+*.pyo
+*.bak
+*.tmp
+.venv/
+.learnark/
+_sandbox/
+evaluation/learner-projects/
+*.log

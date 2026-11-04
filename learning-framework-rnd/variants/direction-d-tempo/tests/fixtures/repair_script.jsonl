@@ -1,0 +1,2 @@
+{"match": "无块测试", "reply": "先说第一步：用一句话说说你对这个活动的理解，不用管格式。"}
+{"reply": "```learn-update\n{\"help_level\": 0, \"attempt\": {\"activity_id\": \"recall-repair\", \"correct\": true}, \"misconception\": null, \"next\": \"继续下一题\", \"mastery_delta\": 1}\n```"}

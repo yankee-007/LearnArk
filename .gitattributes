@@ -1,0 +1,2 @@
+﻿# Keep repository bytes exact across machines (no CRLF normalisation)
+* -text

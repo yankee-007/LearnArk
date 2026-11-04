@@ -1,0 +1,93 @@
+Pre-fix run: runtime files taken from git commit 7abc1fa (before D-Reliability fixes),
+same tests/test_reliability.py (24 tests).
+Command: python tests/test_reliability.py  (isolated copy of the variant)
+Result: 19/24 passed, 5 failures.
+
+FAIL: test_repeated_start_does_not_duplicate_session_opening (__main__.DuplicateSaveTests.test_repeated_start_does_not_
+duplicate_session_opening)
+`start` is idempotent: no session block without a matching event.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\YK\AppData\Local\Temp\skillmap-prefix-f9d0qov5\variant\tests\test_reliability.py", line 552, in test_r
+epeated_start_does_not_duplicate_session_opening
+    self.assertEqual(text.count("## ϵͳ"), len(opened), "a duplicated opening exists in the session file")
+AssertionError: 3 != 2 : a duplicated opening exists in the session file
+
+======================================================================
+FAIL: test_missing_map_in_email_project_rebuilds_writing_map (__main__.TornStateTests.test_missing_map_in_email_project
+_rebuilds_writing_map)
+Rebuilding a lost map must use the project's template, not agent-dev.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\YK\AppData\Local\Temp\skillmap-prefix-f9d0qov5\variant\tests\test_reliability.py", line 355, in test_m
+issing_map_in_email_project_rebuilds_writing_map
+    self.assertEqual(ids, ["W1", "W6", "W2", "W3", "W4", "W5"], "the rebuilt map used the wrong template")
+AssertionError: Lists differ: ['A1', 'A2', 'B1', 'B2', 'B3', 'C1', 'C2', [60 chars]'W5'] != ['W1', 'W6', 'W2', 'W3', 'W
+4', 'W5']
+
+First differing element 0:
+'A1'
+'W1'
+
+First list contains 12 additional elements.
+First extra element 6:
+'C2'
+
+- ['A1',
+-  'A2',
+-  'B1',
+-  'B2',
+-  'B3',
+-  'C1',
+-  'C2',
+-  'C3',
+-  'C4',
+-  'D1',
+-  'D2',
+-  'E1',
+-  'W1',
+-  'W6',
+-  'W2',
+-  'W3',
+-  'W4',
+-  'W5'] : the rebuilt map used the wrong template
+
+======================================================================
+FAIL: test_missing_map_snapshot_recovers_levels_from_bak (__main__.TornStateTests.test_missing_map_snapshot_recovers_le
+vels_from_bak)
+A lost (not merely truncated) map.json is restored from .bak.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\YK\AppData\Local\Temp\skillmap-prefix-f9d0qov5\variant\tests\test_reliability.py", line 340, in test_m
+issing_map_snapshot_recovers_levels_from_bak
+    self.assertEqual(self.node(project, "A1")["level"], 2, "levels were lost when map.json was missing")
+AssertionError: 0 != 2 : levels were lost when map.json was missing
+
+======================================================================
+FAIL: test_missing_trailing_newline_keeps_events_and_append_is_safe (__main__.TornStateTests.test_missing_trailing_newl
+ine_keeps_events_and_append_is_safe)
+A complete last event without a newline must be kept, not merged.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\YK\AppData\Local\Temp\skillmap-prefix-f9d0qov5\variant\tests\test_reliability.py", line 433, in test_m
+issing_trailing_newline_keeps_events_and_append_is_safe
+    self.assertTrue(payload["journal"]["events"] >= before, "a complete event was dropped")
+AssertionError: False is not true : a complete event was dropped
+
+======================================================================
+FAIL: test_torn_journal_tail_is_repaired_before_append (__main__.TornStateTests.test_torn_journal_tail_is_repaired_befo
+re_append)
+A torn tail is dropped, reported, and the next append stays valid.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\YK\AppData\Local\Temp\skillmap-prefix-f9d0qov5\variant\tests\test_reliability.py", line 406, in test_t
+orn_journal_tail_is_repaired_before_append
+    self.assertTrue(any("journal" in note for note in payload["repairs"]), payload["repairs"])
+AssertionError: False is not true : []
+
+----------------------------------------------------------------------
+Ran 24 tests in 127.248s
+
+FAILED (failures=5)
+
+19/24 reliability tests passed

@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-04T12:40:00+08:00",
+  "note": "Real subagent ledger. Only agent ids returned by the harness are recorded; a task without a returned result does not count as completed. Learner/acceptance agents are listed separately and are not part of the 16 R&D posts.",
+  "dev_posts": 16,
+  "agents": [
+    {
+      "agent_id": "8abcb47e-528f-41d0-94fd-55e69915ed18",
+      "variant": "direction-a-skillmap",
+      "role": "D-Research 方向负责人/产品研究者",
+      "task_id": "A-R1",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ]
+    },
+    {
+      "agent_id": "58335189-5f04-4b5c-ba79-83159caabf52",
+      "variant": "direction-a-skillmap",
+      "role": "D-Pedagogy 教学与导师设计者",
+      "task_id": "A-R2",
+      "status": "completed",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ]
+    },
+    {
+      "agent_id": "0bfcb4e0-55b6-4d39-93b7-4970570b99b8",
+      "variant": "direction-a-skillmap",
+      "role": "D-Engineer 实现工程师",
+      "task_id": "A-R3",
+      "status": "completed",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "agent_id": null,
+      "variant": "direction-a-skillmap",
+      "role": "D-Reliability 记忆与可靠性工程师",
+      "task_id": "A-R4",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md"
+      ]
+    },
+    {
+      "agent_id": "80ce8f7c-7447-4b5f-ac67-a3aeaa40ddea",
+      "variant": "direction-b-forge",
+      "role": "D-Research 方向负责人/产品研究者",
+      "task_id": "B-R1",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ]
+    },
+    {
+      "agent_id": "fd70b66f-6209-4df7-9bf3-a8fea43ecff7",
+      "variant": "direction-b-forge",
+      "role": "D-Pedagogy 教学与导师设计者",
+      "task_id": "B-R2",
+      "status": "completed",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ]
+    },
+    {
+      "agent_id": "a3bb5b98-de68-4586-99ca-d890868c5286",
+      "variant": "direction-b-forge",
+      "role": "D-Engineer 实现工程师",
+      "task_id": "B-R3",
+      "status": "failed-during-api-outage",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "agent_id": null,
+      "variant": "direction-b-forge",
+      "role": "D-Reliability 记忆与可靠性工程师",
+      "task_id": "B-R4",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md"
+      ]
+    },
+    {
+      "agent_id": "3227c20d-d0e1-4bbe-a99d-97d011b5e9f2",
+      "variant": "direction-c-atelier",
+      "role": "D-Research 方向负责人/产品研究者",
+      "task_id": "C-R1",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ]
+    },
+    {
+      "agent_id": "ff6df10e-78d1-4780-a255-34899bd733fa",
+      "variant": "direction-c-atelier",
+      "role": "D-Pedagogy 教学与导师设计者",
+      "task_id": "C-R2",
+      "status": "completed",
+      "outputs": [
+        "mentors/",
+        "protocols/handoff.md",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ]
+    },
+    {
+      "agent_id": "2e8a6010-79b8-4bc6-a4e9-a35fb00348fa",
+      "variant": "direction-c-atelier",
+      "role": "D-Engineer 实现工程师",
+      "task_id": "C-R3",
+      "status": "failed-during-api-outage",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "agent_id": null,
+      "variant": "direction-c-atelier",
+      "role": "D-Reliability 记忆与可靠性工程师",
+      "task_id": "C-R4",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md"
+      ]
+    },
+    {
+      "agent_id": "f1c2b168-5853-4352-bc54-b08251d71a12",
+      "variant": "direction-d-tempo",
+      "role": "D-Research 方向负责人/产品研究者",
+      "task_id": "D-R1",
+      "status": "completed",
+      "outputs": [
+        "design.md",
+        "version-manifest.json",
+        "experiments/PLAN.md"
+      ]
+    },
+    {
+      "agent_id": "34d24dfb-13da-4bf4-9dae-9ee95da2e60f",
+      "variant": "direction-d-tempo",
+      "role": "D-Pedagogy 教学与导师设计者",
+      "task_id": "D-R2",
+      "status": "running",
+      "outputs": [
+        "mentors/",
+        "curriculum/",
+        "templates/",
+        "tests/fixtures/mentor_script.jsonl"
+      ]
+    },
+    {
+      "agent_id": "4fd6b229-f641-4946-8c8c-f7f74e9bca74",
+      "variant": "direction-d-tempo",
+      "role": "D-Engineer 实现工程师",
+      "task_id": "D-R3",
+      "status": "failed-during-api-outage",
+      "outputs": [
+        "runtime/",
+        "START_HERE.md",
+        "tests/run_tests.py"
+      ]
+    },
+    {
+      "agent_id": null,
+      "variant": "direction-d-tempo",
+      "role": "D-Reliability 记忆与可靠性工程师",
+      "task_id": "D-R4",
+      "status": "pending",
+      "outputs": [
+        "tests/test_reliability.py",
+        "docs/recovery.md"
+      ]
+    }
+  ],
+  "experience_agents": [
+    {
+      "agent_id": "5a30d5f4-06d6-434e-9858-e711c1aa17b1",
+      "variant": "direction-b-forge",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "report": "variants/direction-b-forge/experiments/round-01/experience-S1-P1.md",
+      "result": "completed"
+    },
+    {
+      "agent_id": "69040e47-08f5-49c2-b814-befdfe239703",
+      "variant": "direction-a-skillmap",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "report": "variants/direction-a-skillmap/experiments/round-01/experience-S1-P1.md",
+      "result": "completed-with-reservations"
+    },
+    {
+      "agent_id": "201a1e23-f9cf-412d-afa4-28d6530cdccc",
+      "variant": "direction-c-atelier",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "report": "variants/direction-c-atelier/experiments/round-01/experience-S1-P1.md",
+      "result": "blocked"
+    },
+    {
+      "agent_id": "da6f71c1-eb2b-477f-8f38-1ef019e986fb",
+      "variant": "direction-d-tempo",
+      "round": 1,
+      "scenario": "S1",
+      "persona": "P1",
+      "status": "completed",
+      "report": "variants/direction-d-tempo/experiments/round-01/experience-S1-P1.md",
+      "result": "completed-with-reservations"
+    },
+    {
+      "agent_id": "4e8e8f34-a397-4d04-bbf6-b8a433b0a416",
+      "variant": "direction-a-skillmap",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "completed"
+    },
+    {
+      "agent_id": "46c36bfc-afd2-4e83-bd79-49966f7e6245",
+      "variant": "direction-b-forge",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "completed"
+    },
+    {
+      "agent_id": "c7ba4e1c-47cc-4d72-8f51-b965223b63bc",
+      "variant": "direction-d-tempo",
+      "round": 2,
+      "scenario": "S2",
+      "persona": "P2",
+      "status": "completed"
+    },
+    {
+      "agent_id": "8fff2da1-5860-47d1-909e-f4a7efce3c85",
+      "variant": "direction-a-skillmap",
+      "round": 3,
+      "scenario": "S3",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "342eabab-7768-4a2f-9d9a-376a7d4883ae",
+      "variant": "direction-a-skillmap",
+      "round": 4,
+      "scenario": "S4",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "18fe9305-236d-4d7a-9532-1d1d27a90e0b",
+      "variant": "direction-b-forge",
+      "round": 3,
+      "scenario": "S3",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "3962d98b-8816-4939-95f7-fed9caed3828",
+      "variant": "direction-b-forge",
+      "round": 4,
+      "scenario": "S4",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "9b15f332-1b04-49e4-b2e2-1644bc884a08",
+      "variant": "direction-d-tempo",
+      "round": 3,
+      "scenario": "S3",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "67e76022-a1f4-4c34-931f-e3598b789be9",
+      "variant": "direction-d-tempo",
+      "round": 4,
+      "scenario": "S4",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "c83c09af-b005-46bc-a7ba-ce2c221190b0",
+      "variant": "direction-c-atelier",
+      "round": 3,
+      "scenario": "S3",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": "4386c557-538b-4f14-bf15-e89198a3c4f8",
+      "variant": "direction-c-atelier",
+      "round": 4,
+      "scenario": "S4",
+      "persona": "P3",
+      "status": "running"
+    },
+    {
+      "agent_id": null,
+      "variant": "all",
+      "round": "reliability",
+      "role": "D-Reliability 记忆与可靠性工程师",
+      "status": "pending"
+    }
+  ],
+  "acceptance_agents": [],
+  "incidents": [
+    {
+      "at": "2026-11-04T03:50:05+08:00",
+      "kind": "provider-outage",
+      "detail": "DeepSeek API returned HTTP 402 (payment required); 5 real subagents failed mid-turn. Retried at 11:41 and the API answered again. No results from the failed attempts are counted.",
+      "failed_agents": {
+        "8656f427-d6fa-4ea0-80d5-571d82bffcc6": "A round-5 learner test",
+        "bea76527-7c5d-408f-a28c-08db9d9af61a": "A round-6 learner test",
+        "2e8a6010-79b8-4bc6-a4e9-a35fb00348fa": "C fix agent (round-03/04)",
+        "4fd6b229-f641-4946-8c8c-f7f74e9bca74": "D fix agent (round-03/04)",
+        "a3bb5b98-de68-4586-99ca-d890868c5286": "B fix agent (round-03/04)"
+      },
+      "recovery": "re-run the same tasks in smaller batches (2-3 concurrent) after checking every variant's test suite"
+    },
+    {
+      "at": "2026-11-04T12:38:33+08:00",
+      "kind": "write-collision",
+      "detail": "D-Reliability for direction C was started while the round-05/06 functional fix agent still owned runtime files. Both edited runtime/atelier/*. Reliability worker was told to freeze runtime edits, keep its tests/docs, and report defects; functional owner continues and will be followed by a final reliability pass.",
+      "variants": [
+        "direction-c-atelier"
+      ],
+      "recovery": "functional fix lands first; reliability hardening re-applied on final code; both test suites re-run"
+    }
+  ],
+  "reliability_agents": [
+    {
+      "agent_id": "5e39bea0-16fd-4aee-93a3-bd1d487f7f39",
+      "variant": "direction-a-skillmap",
+      "role": "D-Reliability",
+      "status": "running"
+    },
+    {
+      "agent_id": "7d1fd55e-b74a-488e-b737-0bf67c5dc4d0",
+      "variant": "direction-c-atelier",
+      "role": "D-Reliability",
+      "status": "running"
+    }
+  ]
+}

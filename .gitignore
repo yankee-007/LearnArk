@@ -1,0 +1,11 @@
+﻿# LearnArk workspace (temporary sandbox excluded)
+_sandbox/
+__pycache__/
+*.pyc
+*.pyo
+*.bak
+*.tmp
+Thumbs.db
+desktop.ini
+.vscode/
+.DS_Store

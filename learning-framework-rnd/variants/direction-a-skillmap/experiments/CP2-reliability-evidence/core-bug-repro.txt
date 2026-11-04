@@ -1,0 +1,7 @@
+events readable after a torn write: 1
+events readable after appending ev_2: 1   <- ev_2 silently lost
+raw lines now:
+  1 {"kind": "ok", "id": "ev_1"}
+  2 {"kind": "torn", "id": {"kind": "next", "id": "ev_2"}
+  3 {"kind": "next", "id": "ev_3"}
+next read fails: C:\Users\YK\AppData\Local\Temp\tmpo20y596c\events.jsonl line 2 is not valid JSON

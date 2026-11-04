@@ -1,0 +1,133 @@
+{
+  "id": "tempo-budget-ds1",
+  "version": "1",
+  "note": "D-S1 固定 fixture：候选与技能均为构造值，不得用于体验报告冒充真实记录。due_at 不写死日期，由测试从 LEARNARK_NOW 注入后按 due_offset_days 推导。",
+  "candidates": [
+    {
+      "key": "A",
+      "activity_id": "recall-A",
+      "activity_type": "recall_card",
+      "template": "recall_card",
+      "skill": "skill-a",
+      "skill_title": "到期卡 A",
+      "minutes": 5,
+      "mentor": "trainer",
+      "tier": 1,
+      "source": "due_card",
+      "due_offset_days": 0,
+      "level": 1,
+      "new": false,
+      "errors_7d": 0,
+      "plan_progress": 0.0,
+      "leech": false,
+      "card_id": "card-A"
+    },
+    {
+      "key": "B",
+      "activity_id": "kata-B",
+      "activity_type": "code_kata",
+      "template": "code_kata",
+      "skill": "skill-b",
+      "skill_title": "逾期 kata B",
+      "minutes": 15,
+      "mentor": "trainer",
+      "tier": 1,
+      "source": "due_card",
+      "due_offset_days": -3,
+      "level": 2,
+      "new": false,
+      "errors_7d": 0,
+      "plan_progress": 0.0,
+      "leech": false,
+      "card_id": "card-B"
+    },
+    {
+      "key": "C",
+      "activity_id": "quiz-C",
+      "activity_type": "quiz",
+      "template": "quiz",
+      "skill": "skill-c",
+      "skill_title": "本周块步骤 C",
+      "minutes": 12,
+      "mentor": "examiner",
+      "tier": 2,
+      "source": "block_step",
+      "level": 1,
+      "new": false,
+      "errors_7d": 0,
+      "plan_progress": 1.0,
+      "leech": false,
+      "block_id": "block-fixture",
+      "step_index": 0
+    },
+    {
+      "key": "D",
+      "activity_id": "concept-D",
+      "activity_type": "concept_block",
+      "template": "concept_block",
+      "skill": "skill-d",
+      "skill_title": "新内容 D",
+      "minutes": 5,
+      "mentor": "coach",
+      "tier": 3,
+      "source": "weak_new",
+      "level": 0,
+      "new": true,
+      "errors_7d": 0,
+      "plan_progress": 0.0,
+      "leech": false
+    },
+    {
+      "key": "E",
+      "activity_id": "explain-E",
+      "activity_type": "explain_back",
+      "template": "explain_back",
+      "skill": "skill-e",
+      "skill_title": "新内容 E",
+      "minutes": 10,
+      "mentor": "coach",
+      "tier": 3,
+      "source": "weak_new",
+      "level": 0,
+      "new": true,
+      "errors_7d": 0,
+      "plan_progress": 0.0,
+      "leech": false
+    },
+    {
+      "key": "F",
+      "activity_id": "kata-F",
+      "activity_type": "code_kata",
+      "template": "code_kata",
+      "skill": "skill-f",
+      "skill_title": "新内容 F",
+      "minutes": 20,
+      "mentor": "trainer",
+      "tier": 3,
+      "source": "weak_new",
+      "level": 0,
+      "new": true,
+      "errors_7d": 0,
+      "plan_progress": 0.0,
+      "leech": false
+    }
+  ],
+  "expect": {
+    "5": {
+      "chosen": "recall-A",
+      "plan": ["recall-A"],
+      "reject_contains": "超出剩余 5 分钟",
+      "why": "B 15 分钟被预算硬过滤"
+    },
+    "20": {
+      "chosen": "kata-B",
+      "plan": ["kata-B", "recall-A"],
+      "why": "B 的 U=1.0、F=0.75 胜过 A 的 0.25/0.25"
+    },
+    "45": {
+      "chosen": "kata-B",
+      "plan": ["kata-B", "quiz-C"],
+      "why": "仍选 B；预算足够追加本周块步骤 C，2 项上限"
+    }
+  }
+}

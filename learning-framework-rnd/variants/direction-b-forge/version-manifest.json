@@ -2,7 +2,7 @@
   "id": "direction-b-forge",
   "name": "Forge 作品驱动",
   "version": "0.2.4",
-  "core_version": "1.0.5",
+  "core_version": "1.0.6",
   "entry": "runtime/learn.py",
   "schema_version": 1,
   "mentors": [

@@ -284,7 +284,8 @@ class InitTests(AtelierTestCase):
     def test_version_manifest_matches_runtime(self):
         manifest = json.loads((ROOT / "version-manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["version"], "0.2.4")
-        self.assertEqual(manifest["core_version"], "1.0.4")
+        runtime_core = (ROOT / "runtime" / "CORE_VERSION").read_text(encoding="utf-8").strip()
+        self.assertEqual(manifest["core_version"], runtime_core)
         start_here = (ROOT / "START_HERE.md").read_text(encoding="utf-8")
         self.assertIn("0.2.4", start_here)
 

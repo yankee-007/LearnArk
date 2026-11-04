@@ -2,7 +2,7 @@
   "id": "direction-a-skillmap",
   "name": "SkillMap 能力地图",
   "version": "0.2.4",
-  "core_version": "1.0.5",
+  "core_version": "1.0.6",
   "entry": "runtime/learn.py",
   "schema_version": 1,
   "mentors": [

@@ -9,3 +9,18 @@ Thumbs.db
 desktop.ini
 .vscode/
 .DS_Store
+# added by LearnArk
+# LearnArk project -- generated
+.env
+.env.*
+*.key
+*credentials*
+*secret*
+*.log
+*.lock
+.pytest_cache/
+.learnark/tmp/
+.learnark/**/*.lock
+.learnark/**/usage.jsonl
+.learnark/**/sync-log.jsonl
+.learnark/**/*.tmp

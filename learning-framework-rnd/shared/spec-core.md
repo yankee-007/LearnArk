@@ -1,7 +1,9 @@
-# 运行时核心 `learncore` 1.0.5 规范
+# 运行时核心 `learncore` 1.0.6 规范
 
 位置：`shared/core-v1/learncore/`。每个方向在 `variants/<id>/runtime/learncore/` 内置一份**逐字拷贝**，由 `shared/vendor_core.py` 写入，禁止手改；方向逻辑写在自己的模块里。`CORE_VERSION` 必须出现在 `version-manifest.json`。
 
+> 1.0.6：项目必须拥有自己的 `.git`。`GitSync.is_repo()` 只在本项目就是仓库根时为真；学习项目放在另一个仓库（monorepo、笔记仓库、LearnArk 工作区）里时，`init` 会在项目根新建独立仓库，`sync` 绝不把学习记录提交进外层仓库。
+>
 > 1.0.1：`GitSync.run()` 不再 `strip()` 整个 porcelain 输出（否则第一行状态列空格被吃、第二次同步必坏）。
 >
 > 1.0.2：分叉恢复——`sync()` 失败后尝试 `recover_diverged()`，只对 journal 做并集合并（按事件 id、重排 seq、重建 dedupe），快照冲突中止并返回真实文件列表；`--recover` 显式入口；生成 `.gitattributes`（`* -text`）与锁/用量忽略项。

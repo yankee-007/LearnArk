@@ -1,32 +1,32 @@
 # RESUME — 断点续跑说明
 
-> 最近更新：2026-11-04 13:35（核心 1.0.5 统一验证后）
+> 状态：2026-11-04 用户要求主动收尾停止。这不是“全部完成”，而是“在安全点停下并交付”。
 
-## 当前真实状态
+## 已交付（可核验）
 
-- **direction-a-skillmap** v0.2.4 core 1.0.5: 体验报告 6 份（R1–R6），修复记录 6 份，可靠性测试 yes，CP2 有
-- **direction-b-forge** v0.2.4 core 1.0.5: 体验报告 6 份（R1–R6），修复记录 6 份，可靠性测试 yes，CP2 有
-- **direction-c-atelier** v0.2.4 core 1.0.5: 体验报告 6 份（R1–R6），修复记录 6 份，可靠性测试 yes，CP2 有
-- **direction-d-tempo** v0.2.6 core 1.0.5: 体验报告 6 份（R1–R6），修复记录 6 份，可靠性测试 yes，CP2 有
+- 四个方向可运行：A SkillMap 0.2.4、B Forge 0.2.4、C Atelier 0.2.4、D Tempo 0.2.6；core 统一 1.0.6。
+- 每方向 R1–R6：6 份真实 LLM 独立体验报告 + 6 份修复记录（共 24 + 24）。
+- 每方向可靠性套件：`tests/test_reliability.py`、`docs/recovery.md`、`experiments/CP2-reliability.md`。
+- 最终验证（core 1.0.6）：核心 25/25；A 51/51+24/24；B 42/42+27/27；C 80/80+36/36；D 50/50+25/25；`check_variant --all` 18/18×4；`vendor_core --check-all` 一致。
+- GitHub `main` 已推送；干净克隆 247 文件，克隆内 core 24/24 且 A 离线 E2E 通过。
 
-## 已通过的最终验证（core 1.0.5）
+## 未完成（不得虚报）
 
-- 核心自测 24/24。
-- A: run_tests 51/51, reliability 24/24。
-- B: reliability 27/27（完整 42/42 在 1.0.4 上通过；1.0.5 只改密钥正则）。
-- C: reliability 36/36（完整 80/80 在 1.0.4/1.0.3 上通过；1.0.5 只改密钥正则）。
-- D: reliability 25/25（完整 50/50 在 1.0.4 上通过；1.0.5 只改密钥正则）。
-- vendor_core --check-all: core 1.0.5 全部一致。
+1. R7 定向复测、R8 最终新体验者（0 次）——每方向有效轮次为 6/8。
+2. 独立验收报告 0 份；`shared/acceptance.md` A1–A11 未执行。
+3. `comparison.md`、`final-report.md`、总入口 `START_HERE.md` 未写。
+4. 真实 GitHub 学习项目同步、真实跨设备、真人学习效果均未验证。
+5. 各方向 `issues.md` 的一般改进项未逐条复测。
 
-## 未完成
+## 续跑顺序
 
-1. R7 定向复测、R8 最终新体验者、独立验收报告（4 份）。
-2. 在最终提交上重跑 B/C/D 的完整套件（1.0.5 只改 SECRET_PATTERNS，仍要留最终证据）。
-3. 总入口 START_HERE、comparison、final-report、issues 汇总。
-4. 框架仓库 push 到本地裸仓库 + 干净克隆验证；真实 GitHub/跨设备未验证。
+1. `evaluation/prompts/round-07.md` → 用各方向 `issues.md` 的“已修复”阻塞/重要项做复测。
+2. `evaluation/prompts/round-08.md` → 全新上下文，只读 `START_HERE.md`。
+3. `evaluation/harness/acceptance-brief.md` + `shared/acceptance.md` → 四份 `acceptance-report.md`。
+4. `comparison.md`、`final-report.md`、总入口；学习项目单独建 GitHub 仓库验证跨设备。
 
-## 已知计数
+## 历史与决策
 
-- 每方向有效轮次 = 6（R1–R6 均有独立体验 + 修复 + 复跑）；R7/R8 未开始，不虚报。
-- 研发岗位 16 个均已创建；4 个可靠性 Agent 已产出测试/文档/CP2。
-- 体验者 24 人次；其中 B 的 S5 误读禁读报告，已披露。
+- 两次中断已记录在 `orchestration/agents.json` `incidents`：API 402（5 个子 Agent 失败，失败不计完成）、C 方向写冲突（已冻结可靠性写入）。
+- `learning-framework-rnd` 原独立 git 历史：`_sandbox/archive/learning-framework-rnd-history.bundle`（本地，未推送；`_sandbox` 不入 Git）。
+- 核心修复史见 `shared/spec-core.md`：porcelain 前导空格 → 分叉 journal 合并 → 残尾追加 → 密钥匹配收紧 → 嵌套仓库隔离。

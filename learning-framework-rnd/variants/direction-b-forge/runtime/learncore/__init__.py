@@ -1,4 +1,4 @@
-"""learncore v1.0.2 -- pinned shared runtime core for LearnArk research variants.
+"""learncore v1.0.6 -- pinned shared runtime core for LearnArk research variants.
 
 This package is copied verbatim into each variant (``variants/<id>/runtime/learncore``)
 and pinned by ``CORE_VERSION``. Variants may extend behaviour in their own modules
@@ -16,7 +16,7 @@ Public surface (see shared/spec-core.md):
     cli      -- stdio, error envelope, json output helpers
 """
 
-CORE_VERSION = "1.0.5"
+CORE_VERSION = "1.0.6"
 
 __all__ = [
     "CORE_VERSION",

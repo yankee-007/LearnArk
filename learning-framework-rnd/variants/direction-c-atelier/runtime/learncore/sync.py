@@ -144,8 +144,26 @@ class GitSync:
         return bool(self.git_version())
 
     def is_repo(self) -> bool:
-        code, out, _ = self.run("rev-parse", "--is-inside-work-tree")
-        return code == 0 and out.strip() == "true"
+        """True only when *this project* is the repository root.
+
+        A learning project may live inside another repository (a monorepo, the
+        user's notes repo, or the LearnArk workspace itself). Being "inside" a
+        repo is not enough: syncing must never commit the learner's records into
+        an unrelated parent repository.
+        """
+        code, out, _ = self.run("rev-parse", "--show-toplevel")
+        if code != 0 or not out:
+            return False
+        try:
+            return Path(out).resolve() == self.root.resolve()
+        except OSError:
+            return False
+
+    def enclosing_repo(self) -> str:
+        code, out, _ = self.run("rev-parse", "--show-toplevel")
+        if code == 0 and out:
+            return out
+        return ""
 
     def repo_root(self) -> Path:
         code, out, _ = self.run("rev-parse", "--show-toplevel")
@@ -257,13 +275,14 @@ class GitSync:
 
     # -- operations ------------------------------------------------------
     def ensure_repository(self) -> list[str]:
-        """Initialise a repo and a safe .gitignore when the project is not one yet."""
+        """Initialise a repo at the project root, even inside an outer repository."""
         created = []
         if not self.is_repo():
-            code, _, err = self.run("init", "-q")
-            if code != 0:
-                raise LearnError(f"git init failed: {err}")
-            created.append("git init")
+            if not (self.root / ".git").exists():
+                code, _, err = self.run("init", "-q")
+                if code != 0:
+                    raise LearnError(f"git init failed: {err}")
+                created.append("git init")
         gitignore = self.repo_root() / ".gitignore"
         if not gitignore.exists():
             gitignore.write_text(DEFAULT_GITIGNORE, encoding="utf-8")

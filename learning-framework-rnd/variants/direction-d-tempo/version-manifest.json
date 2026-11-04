@@ -2,7 +2,7 @@
   "id": "direction-d-tempo",
   "name": "Tempo 动态调度",
   "version": "0.2.6",
-  "core_version": "1.0.5",
+  "core_version": "1.0.6",
   "entry": "runtime/learn.py",
   "schema_version": 1,
   "mentors": [

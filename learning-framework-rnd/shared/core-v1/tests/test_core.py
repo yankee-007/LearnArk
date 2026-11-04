@@ -327,5 +327,47 @@ class GitDivergenceTests(unittest.TestCase):
             self.assertFalse(self.git_a.blocked(path), msg=f"should be allowed: {path}")
 
 
+class NestedProjectRepoTests(unittest.TestCase):
+    """A learning project inside another repo must never sync into that repo."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.outer = Path(self.tmp.name) / "outer"
+        self.outer.mkdir()
+        (self.outer / ".gitignore").write_text("sandbox/\n", encoding="utf-8")
+        self._git(self.outer, "init", "-q")
+        self._git(self.outer, "config", "user.name", "outer")
+        self._git(self.outer, "config", "user.email", "o@example.com")
+        self._git(self.outer, "add", "-A")
+        self._git(self.outer, "commit", "-q", "-m", "outer base")
+        self.project = self.outer / "sandbox" / "proj"
+        self.project.mkdir(parents=True)
+        (self.project / "notes.md").write_text("learn", encoding="utf-8")
+        self.git = sync.GitSync(self.project, include=["."])
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _git(self, cwd: Path, *args: str):
+        return subprocess.run(["git", *args], cwd=str(cwd), capture_output=True, text=True, encoding="utf-8", errors="replace")
+
+    def test_nested_project_gets_its_own_repo(self):
+        self.assertFalse(self.git.is_repo())
+        self.assertTrue(self.git.enclosing_repo().endswith("outer"))
+        self.git.ensure_repository()
+        self.assertTrue((self.project / ".git").exists())
+        self.assertTrue(self.git.is_repo())
+        report = self.git.sync("project save")
+        self.assertTrue(report.written)
+        self.assertIn(report.state, ("no-remote", "committed-local"), msg=report.state)
+        proj_log = self._git(self.project, "log", "--oneline").stdout.splitlines()
+        self.assertEqual(len(proj_log), 1, msg=proj_log)
+        # The outer repository must be untouched: no staged files, same HEAD.
+        outer_status = self._git(self.outer, "status", "--porcelain").stdout.strip()
+        self.assertEqual(outer_status, "")
+        log = self._git(self.outer, "log", "--oneline").stdout.splitlines()
+        self.assertEqual(len(log), 1)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
